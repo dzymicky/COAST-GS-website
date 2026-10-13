@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#147c93">
+  <title>COAST-GS | Sparse-View 3D Gaussian Splatting</title>
+  <meta name="description" content="COAST-GS: Coarse-to-Fine Appearance Capacity Control for Sparse-View 3D Gaussian Splatting. A three-stage framework for stable view-dependent appearance from sparse images.">
+  <meta property="og:title" content="COAST-GS: Coarse-to-Fine Appearance Capacity Control">
+  <meta property="og:description" content="Stabilizing sparse-view 3D Gaussian Splatting through support-aware, coarse-to-fine appearance optimization.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23147c93'/%3E%3Cpath d='M45 19a19 19 0 1 0 0 26' fill='none' stroke='white' stroke-width='7' stroke-linecap='round'/%3E%3Ccircle cx='43' cy='32' r='5' fill='%239ee1d5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=white-videos-1">
+  <script src="app.js?v=white-videos-1" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main" aria-label="COAST-GS project overview">
+      <section class="room-comparison wrap" id="room-title" aria-label="Room video comparison">
+        <div class="room-videos" aria-label="Room video comparison across three methods">
+          <figure class="room-video-card"><figcaption id="room-3dgs-label">3DGS</figcaption><div class="video-frame"><video id="room-3dgs-video" aria-labelledby="room-3dgs-label" src="assets/videos/room-3dgs-web.mp4" poster="assets/videos/room-3dgs-poster.jpg" autoplay muted loop playsinline preload="auto"><a href="assets/videos/room-3dgs-web.mp4">Watch the 3DGS Room video</a></video></div></figure>
+          <figure class="room-video-card"><figcaption id="room-drop-label">DropGaussian</figcaption><div class="video-frame"><video id="room-drop-video" aria-labelledby="room-drop-label" src="assets/videos/room-dropgaussian-web.mp4" poster="assets/videos/room-dropgaussian-poster.jpg" autoplay muted loop playsinline preload="auto"><a href="assets/videos/room-dropgaussian-web.mp4">Watch the DropGaussian Room video</a></video></div></figure>
+          <figure class="room-video-card ours-video"><figcaption id="room-coast-label">COAST-GS <span>Ours</span></figcaption><div class="video-frame"><video id="room-coast-video" aria-labelledby="room-coast-label" src="assets/videos/room-coast-gs-web.mp4" poster="assets/videos/room-coast-gs-poster.jpg" autoplay muted loop playsinline preload="auto"><a href="assets/videos/room-coast-gs-web.mp4">Watch the COAST-GS Room video</a></video></div></figure>
+        </div>
+      </section>
+
+    <section class="section wrap" id="motivation" aria-labelledby="motivation-title">
+      <div class="section-heading"><p class="eyebrow">THE OBSERVATION</p><h2 id="motivation-title">More appearance capacity.<br>Less reliable novel views.</h2><p>With only a few observed directions, a more expressive color model can fit the training images while becoming unstable elsewhere.</p></div>
+      <figure class="paper-figure"><a class="zoomable" href="assets/sh-capacity.webp" data-figure="Figure 1 · SH capacity under sparse-view supervision"><img src="assets/sh-capacity.webp" width="1802" height="879" loading="lazy" alt="Figure 1: fixed degree-one SH improves novel-view generalization compared with fixed degree-three SH and the default progressive schedule"><span class="zoom-hint">View full figure ↗</span></a><figcaption><span>Figure 1</span> Restricting appearance to L = 1 can improve novel-view generalization on LLFF and Mip-NeRF 360, despite its lower angular capacity.</figcaption></figure>
+    </section>
+
+    <section class="section section-tinted" id="method" aria-labelledby="method-title"><div class="wrap">
+      <div class="section-heading"><p class="eyebrow">THE METHOD</p><h2 id="method-title">A stable foundation.<br>A controlled refinement.</h2><p>COAST-GS introduces angular appearance capacity in three stages, with stronger stabilization for weakly supported Gaussians.</p></div>
+      <figure class="paper-figure"><a class="zoomable" href="assets/pipeline.webp" data-figure="Figure 4 · The COAST-GS pipeline"><img src="assets/pipeline.webp" width="1809" height="740" loading="lazy" alt="COAST-GS pipeline: DC-only warm-up, support-aware degree-one stabilization, and controlled degree-three refinement with frozen geometry and opacity"><span class="zoom-hint">View full figure ↗</span></a><figcaption><span>Figure 4</span> The complete training pipeline. High-order coefficients are introduced through a shared low-rank dictionary.</figcaption></figure>
+    </div></section>
+    <section class="section wrap comparison-videos" id="more-videos" aria-label="More qualitative results">
+      <div class="comparison-video-card video-frame" id="fern-comparison">
+        <video aria-label="Fern: five-method video comparison" src="assets/videos/llff-fern-comparison-white.mp4" poster="assets/videos/llff-fern-comparison-white-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="auto"><a href="assets/videos/llff-fern-comparison-white.mp4">Watch the Fern comparison</a></video>
+      </div>
+      <div class="comparison-video-card video-frame" id="horns-comparison">
+        <video aria-label="Horns: five-method video comparison" src="assets/videos/llff-horns-comparison-white.mp4" poster="assets/videos/llff-horns-comparison-white-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="auto"><a href="assets/videos/llff-horns-comparison-white.mp4">Watch the Horns comparison</a></video>
+      </div>
+      <div class="comparison-video-card video-frame" id="room-comparison">
+        <video aria-label="Room: five-method video comparison" src="assets/videos/llff-room-comparison-white.mp4" poster="assets/videos/llff-room-comparison-white-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="auto"><a href="assets/videos/llff-room-comparison-white.mp4">Watch the Room comparison</a></video>
+      </div>
+      <div class="comparison-video-card video-frame" id="trex-comparison">
+        <video aria-label="Trex: five-method video comparison" src="assets/videos/llff-trex-comparison-white.mp4" poster="assets/videos/llff-trex-comparison-white-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="auto"><a href="assets/videos/llff-trex-comparison-white.mp4">Watch the Trex comparison</a></video>
+      </div>
+    </section>
+  </main>
+  <dialog id="figure-dialog" aria-labelledby="dialog-caption"><div class="dialog-toolbar"><p id="dialog-caption"></p><button type="button" id="close-dialog" aria-label="Close enlarged figure">Close <span aria-hidden="true">×</span></button></div><div class="dialog-image"><img id="dialog-image" alt=""></div><p class="dialog-tip">Press Escape to close. Scroll to inspect large figures.</p></dialog>
+</body>
+</html>
